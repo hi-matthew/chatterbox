@@ -1,0 +1,29 @@
+.error-container {
+  position: relative;
+  height: auto;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px 15px;
+  margin: 0 0 25px;
+  border-radius: 4px;
+}
+
+.error-container__errors-list {
+  padding: 0 35px;
+}
+
+.error-container__title {
+  text-align: center;
+}
+
+.error-container__error-message {
+  color: rgb(182, 26, 26);
+}
+
+.error-container__error-message ~ .error-container__error-message {
+  margin: 10px 0;
+}
+
+.error-container__error-message:last-child {
+  margin-bottom: 0;
+}
