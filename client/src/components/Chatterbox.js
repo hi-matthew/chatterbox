@@ -118,9 +118,10 @@ class Chatterbox extends Component {
     const { user } = this.state;
     const timestamp = getTimestamp();
 
-    this.socket.emit('message', user, value, timestamp);
-
-    this.form.message.value = '';
+    if(value.trim().length) {
+      this.socket.emit('message', user, value, timestamp);
+      this.form.message.value = '';
+    }
   }
 
   render() {

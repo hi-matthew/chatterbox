@@ -1,6 +1,7 @@
 const express = require("express");
 // const path = require("path");
 const userController = require("../controllers/userController");
+const authController = require("../controllers/authController");
 const utils = require("../utils");
 
 const router = express.Router();
@@ -8,16 +9,16 @@ const router = express.Router();
 router.post(
   "/login",
   utils.loginValidationCriterion,
-  userController.formValidator,
+  authController.formValidator,
   userController.login
 );
 router.post(
   "/sign-up",
   utils.signupValidationCriterion,
-  userController.formValidator,
+  authController.formValidator,
   userController.registerNewUser
 );
-router.get("/user", userController.checkAuthentication, userController.getUser);
+router.get("/user", authController.checkAuthentication, userController.getUser);
 
 router.get("/logout", userController.logout);
 

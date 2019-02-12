@@ -1,7 +1,7 @@
 const getTimestamp = () => {
   const date = new Date().toLocaleDateString();
   let time = new Date().toLocaleTimeString();
-  time = time.split(' ')
+  time = time.split(' ');
 
   if (time[0].length > 7) {
     time = time[0]
