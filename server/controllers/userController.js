@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
         {
           param: "password",
           msg:
-            "Either your password and/or username is invalid. Please try again!"
+            "Either your username and/or password is invalid. Please try again!"
         }
       ]
     });
