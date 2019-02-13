@@ -42,9 +42,9 @@ class Login extends React.Component {
       // reset password input & password state
       this.form.password.value = null;
       this.setState({ loginCredentials: { email, password: null } });
-    }
-    else {
-      window.location.href = '/chatterbox'
+    } else {
+      // redirect to user's chatterbox
+      this.props.history.push(res.data.redirectUrl);
     }
   }
 

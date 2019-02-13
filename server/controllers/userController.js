@@ -26,8 +26,11 @@ exports.login = async (req, res) => {
   if (user) {
     match = await bcrypt.compare(req.body.password, user.passwordHash);
   }
+  
   if (user && match) {
-    req.login(user, err => (err ? console.error(err) : res.send("Success!")));
+    req.login(user, err => err
+      ? console.error(err)
+      : res.status(200).json({success: true, redirectUrl: "/chatterbox"}));
   } else {
     res.send({
       errors: [
