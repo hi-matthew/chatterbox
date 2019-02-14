@@ -1,4 +1,6 @@
-const app = require("express")();
+// eslint-disable-next-line import/newline-after-import
+const express = require("express");
+const app = express();
 const server = require("http").createServer(app);
 // mount socketio onto server
 const io = require("socket.io")(server);
@@ -34,7 +36,9 @@ const db = mongoose.connection;
 db.on("error", err => console.err(`🚫 🙉 🚫 🙉 🚫 🙉 🚫 🙉 ${err.message}`));
 db.on("open", () => console.log("🎉 🎊  Databse connected! 🎉 🎊"));
 
-app.use(require("express").static("../client/build"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
 // Use body-parser middleware to append body to req object
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
