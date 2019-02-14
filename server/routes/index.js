@@ -7,19 +7,19 @@ const utils = require("../utils");
 const router = express.Router();
 
 router.post(
-  "/login",
+  "/api/login",
   utils.loginValidationCriterion,
   authController.formValidator,
   userController.login
 );
 router.post(
-  "/sign-up",
+  "/api/sign-up",
   utils.signupValidationCriterion,
   authController.formValidator,
   userController.registerNewUser
 );
-router.get("/user", authController.checkAuthentication, userController.getUser);
+router.get("/api/user", authController.checkAuthentication, userController.getUser);
 
-router.get("/logout", userController.logout);
+router.get("/api/logout", userController.logout);
 
 module.exports = router;

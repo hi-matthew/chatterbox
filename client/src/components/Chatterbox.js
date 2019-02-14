@@ -24,7 +24,7 @@ class Chatterbox extends Component {
 
   async componentDidMount() {
     this.socket = io();
-    const res = await axios.get('/user');
+    const res = await axios.get('/api/user');
     if(res.data) {
       this.setState({ user: res.data });
     } else {
@@ -91,7 +91,7 @@ class Chatterbox extends Component {
   logout = async () => {
     this.socket.emit("disconnect", this.state.user.username, this.socket.id);
 
-    const res = await axios.get("/logout");
+    const res = await axios.get("/api/logout");
     if(res.data) window.location.href = "/";
   }
 

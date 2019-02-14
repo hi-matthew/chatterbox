@@ -59,7 +59,7 @@ class Signup extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await axios.post('/sign-up', this.state.user);
+    const res = await axios.post('/api/sign-up', this.state.user);
     let errorBin = { ...this.state.errorBin };
     console.log(res);
 

@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
+const cors = require("cors");
 
 const API_PORT = process.env.PORT || 7777;
 // import models
@@ -33,7 +34,7 @@ const db = mongoose.connection;
 db.on("error", err => console.err(`🚫 🙉 🚫 🙉 🚫 🙉 🚫 🙉 ${err.message}`));
 db.on("open", () => console.log("🎉 🎊  Databse connected! 🎉 🎊"));
 
-app.use(require("express").static("../client/public"));
+app.use(require("express").static("../client/build"));
 // Use body-parser middleware to append body to req object
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,8 +57,14 @@ app.use(session(sessionSettings));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(cors());
+
 // Declare routes
 app.use("/", require("./routes/index"));
+
+app.get("/*", function(req, res) {
+  res.sendFile(`${__dirname}/../../client/build/index.html`);
+});
 
 const users = {};
 // Create socket
