@@ -18,6 +18,13 @@ git clone https://github.com/matthewoctober/chatterbox.git
 
 (If you're not a fan of splitting terminal windows, feel free to _npm install <a href="https://www.npmjs.com/package/concurrently" target="_blank">concurrently</a>_ and write your own npm script to run both servers simultaneously. Otherwise, split your terminal windows and proceed.)
 
+(Server terminal) Install server project dependencies:
+
+```bash
+cd chatterbox
+npm install
+```
+
 (Client terminal) Install client project dependencies:
 
 ```bash
@@ -25,12 +32,19 @@ cd chatterbox && cd client
 npm install
 ```
 
-(Server terminal) Install server project dependencies:
+Create a environment variables file in the root directory
 
 ```bash
-cd chatterbox && cd server
-npm install
+touch variables.env
 ```
+
+Create the following variables in your variables.env file:
+
+- NODE_ENV=development
+- DATABASE=_replace-with-mlab-driver_
+- SECRET= _replace-with-unique-secret_
+
+Visit <a href="https://mlab.com/" target="_blank">https://mlab.com</a> to create a free database and copy & paste your driver as the value for your DATABASE variable.
 
 (Client terminal) Run development server:
 
@@ -41,7 +55,9 @@ npm start
 (Server terminal) Run development express server:
 
 ```bash
-npm start
+npm run dev
 ```
+
+And there you have it, your own MERN stack application to tinker with!
 
 Happy hacking!
