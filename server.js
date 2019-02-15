@@ -74,6 +74,7 @@ const users = {};
 // Create socket
 io.on("connection", socket => {
   socket.on("login", (username, socketId) => {
+    if (!username) return;
     users[socketId] = username;
     socket.broadcast.emit("login", username);
 
@@ -93,10 +94,10 @@ io.on("connection", socket => {
     const socketId = socket.id;
     const username = users[socket.id];
     delete users[socketId];
-
-    socket.broadcast.emit("logout", username);
-
     const onlineUsers = Object.values(users);
+
+    if (!username) return;
+    socket.broadcast.emit("logout", username);
     io.emit("online", onlineUsers);
   });
 });

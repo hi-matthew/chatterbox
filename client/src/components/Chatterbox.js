@@ -25,6 +25,7 @@ class Chatterbox extends Component {
   async componentDidMount() {
     this.socket = io();
     const res = await axios.get('/api/user');
+    // leave console log in case there are issues in prod
     console.log(res);
 
     res.data.username
