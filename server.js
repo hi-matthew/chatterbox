@@ -37,7 +37,7 @@ db.on("error", err => console.err(`🚫 🙉 🚫 🙉 🚫 🙉 🚫 🙉 ${err
 db.on("open", () => console.log("🎉 🎊  Databse connected! 🎉 🎊"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
+  app.use(express.static("client/build"));
 }
 // Use body-parser middleware to append body to req object
 app.use(bodyParser.json());
@@ -67,7 +67,7 @@ app.use(cors());
 app.use("/", require("./routes/index"));
 
 app.get("/*", function(req, res) {
-  res.sendFile(`${__dirname}/../../client/build/index.html`);
+  res.sendFile(path.resolve("client/build/index.html"));
 });
 
 const users = {};
