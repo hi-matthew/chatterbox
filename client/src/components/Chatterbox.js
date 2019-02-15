@@ -28,9 +28,9 @@ class Chatterbox extends Component {
     // leave console log in case there are issues in prod
     console.log(res);
 
-    res.data.username
-    ? this.setState({ user: res.data })
-    : this.props.history.goBack();
+    if (res.data.username) {
+      this.setState({ user: res.data });
+    }
 
     // Config for notifying users when a new user logs in
     this.socket.emit("login", this.state.user.username, this.socket.id);
