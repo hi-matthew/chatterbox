@@ -8,6 +8,22 @@ Within this project I was able to delve into numerous concepts surrounding REST 
 
 I decided to bootstrap the front-end with Create React App rather than using a traditional MVC design pattern because, frankly, I enjoy writing React. Though, I have worked with Pug previously to render view files.
 
+## Instructions to play
+
+- Go to <a href="https://chatterbox-prod.herokuapp.com/" target=_blank>Chatterbox</a>
+- Sign up for an acccount or sign in using pseudo accounts listed below
+  - Joe Rogan
+    - Email: joe@gmail.com
+    - Password: testing
+  - Elon Musk
+    - Email: elon@gmail.com
+    - Password: testing
+  - Bill Gates
+    - Email: bill@gmail.com
+    - Password: testing
+- Open up an incognito window and sign in with a separate account
+- Start chatting!
+
 ## Install
 
 Clone this respository:
