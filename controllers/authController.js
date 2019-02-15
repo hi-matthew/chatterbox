@@ -21,5 +21,5 @@ exports.checkAuthentication = (req, res, next) => {
     next();
     return;
   }
-  res.send("false");
+  res.send({ authentication: "false", session: req.session });
 };

@@ -25,11 +25,11 @@ class Chatterbox extends Component {
   async componentDidMount() {
     this.socket = io();
     const res = await axios.get('/api/user');
-    if(res.data) {
-      this.setState({ user: res.data });
-    } else {
-      window.location.href = "/";
-    }
+    console.log(res);
+
+    res.data.username
+    ? this.setState({ user: res.data })
+    : this.props.history.goBack();
 
     // Config for notifying users when a new user logs in
     this.socket.emit("login", this.state.user.username, this.socket.id);

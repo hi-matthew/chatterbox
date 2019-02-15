@@ -18,7 +18,11 @@ router.post(
   authController.formValidator,
   userController.registerNewUser
 );
-router.get("/api/user", authController.checkAuthentication, userController.getUser);
+router.get(
+  "/api/user",
+  authController.checkAuthentication,
+  userController.getUser
+);
 
 router.get("/api/logout", userController.logout);
 
